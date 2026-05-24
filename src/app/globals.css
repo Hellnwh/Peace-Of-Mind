@@ -1,0 +1,77 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 2%;
+    --foreground: 220 10% 98%;
+    --card: 220 30% 4%;
+    --card-foreground: 220 10% 98%;
+    --popover: 220 30% 2%;
+    --popover-foreground: 220 10% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 210 40% 2%;
+    --secondary: 210 20% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 20% 10%;
+    --muted-foreground: 210 5% 75%;
+    --accent: 180 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 15%;
+    --input: 210 20% 15%;
+    --ring: 180 70% 50%;
+    --radius: 1.5rem;
+    
+    --sky-top: #020617;
+    --sky-bottom: #0f172a;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent/30;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl;
+    will-change: transform, opacity;
+  }
+  .text-glow {
+    text-shadow: 0 0 30px hsl(var(--accent) / 0.5);
+  }
+  .sanctuary-sky {
+    background: linear-gradient(to bottom, var(--sky-top), var(--sky-bottom));
+    transition: all 4s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateZ(0);
+  }
+  .gpu-boost {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+  .no-friction {
+    @apply transition-all duration-75 ease-out;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/20 rounded-full hover:bg-accent/40;
+}

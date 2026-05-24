@@ -1,0 +1,28 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-abstract",
+      "description": "Ultra-HD cinematic abstract swirls of emerald and gold light on a black void.",
+      "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjBlbWVyYWxkfGVufDB8fHx8fDE3NzE1OTI3OTJ8MA&ixlib=rb-4.1.0&q=80&w=1920",
+      "imageHint": "abstract deep"
+    },
+    {
+      "id": "journal-tool",
+      "description": "High-fidelity shot of a luxury journal with soft warm ambient lighting.",
+      "imageUrl": "https://images.unsplash.com/photo-1517842645767-c639042777db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxqYXVybmFsJTIwbHV4dXJ5fGVufDB8fHx8fDE3NzE1OTI5MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "journal light"
+    },
+    {
+      "id": "challenges-tool",
+      "description": "Hyper-realistic mountain peak at golden hour, representing resilience.",
+      "imageUrl": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb3VudGFpbiUyMGFzdGhldGljfGVufDB8fHx8fDE3NzE1OTMwMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mountain gold"
+    },
+    {
+      "id": "resources-tool",
+      "description": "Modern minimalist library space with clean architectural lines.",
+      "imageUrl": "https://images.unsplash.com/photo-1497366216548-37526070297c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwaW50ZXJpb3J8ZW58MHx8fHwxNzcxNTkzMDYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist space"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+
+{
+  "entities": {
+    "UserProfile": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserProfile",
+      "type": "object",
+      "description": "Represents a user's profile in the PeaceMind application.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserProfile entity."
+        },
+        "userId": {
+          "type": "string",
+          "description": "The user's unique ID."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The user's display name."
+        },
+        "email": {
+          "type": "string",
+          "description": "The user's email address.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The user's verified phone number for emergency contact."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the user profile was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the user profile was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "DistressAlert": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "DistressAlert",
+      "type": "object",
+      "description": "A ticket created when severe distress is detected, triggering manual or automated intervention.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userPhone": {
+          "type": "string"
+        },
+        "triggerContent": {
+          "type": "string",
+          "description": "The text that triggered the distress alert."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "called", "resolved"],
+          "description": "The status of the intervention."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["id", "userId", "triggerContent", "status", "timestamp"]
+    },
+    "MoodEntry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "MoodEntry",
+      "type": "object",
+      "description": "Represents a user's mood entry.",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "moodScore": { "type": "number" },
+        "moodEmoji": { "type": "string" },
+        "notes": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "moodScore", "moodEmoji", "timestamp"]
+    },
+    "ScreeningResult": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ScreeningResult",
+      "type": "object",
+      "description": "Stores clinical screening results (PHQ-9 & GAD-7).",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "phq9Score": { "type": "number" },
+        "gad7Score": { "type": "number" },
+        "triageLevel": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "phq9Score", "gad7Score", "triageLevel", "timestamp"]
+    },
+    "StickyNote": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "StickyNote",
+      "type": "object",
+      "description": "Represents a user's sticky note.",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "content", "createdAt", "updatedAt"]
+    },
+    "CommunityPost": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "CommunityPost",
+      "type": "object",
+      "description": "Represents a post in the community forum.",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "likes": { "type": "number" },
+        "replies": { "type": "number" }
+      },
+      "required": ["id", "content", "createdAt", "likes", "replies"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous",
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "UserProfile",
+          "schema": { "$ref": "#/backend/entities/UserProfile" },
+          "description": "Stores user profiles."
+        }
+      },
+      {
+        "path": "/distressAlerts/{alertId}",
+        "definition": {
+          "entityName": "DistressAlert",
+          "schema": { "$ref": "#/backend/entities/DistressAlert" },
+          "description": "Tickets for distress intervention."
+        }
+      },
+      {
+        "path": "/users/{userId}/moodEntries/{moodEntryId}",
+        "definition": {
+          "entityName": "MoodEntry",
+          "schema": { "$ref": "#/backend/entities/MoodEntry" },
+          "description": "User mood entries."
+        }
+      },
+      {
+        "path": "/users/{userId}/screeningResults/{resultId}",
+        "definition": {
+          "entityName": "ScreeningResult",
+          "schema": { "$ref": "#/backend/entities/ScreeningResult" },
+          "description": "User clinical screening history."
+        }
+      },
+      {
+        "path": "/users/{userId}/stickyNotes/{stickyNoteId}",
+        "definition": {
+          "entityName": "StickyNote",
+          "schema": { "$ref": "#/backend/entities/StickyNote" },
+          "description": "User journal entries."
+        }
+      },
+      {
+        "path": "/communityPosts/{communityPostId}",
+        "definition": {
+          "entityName": "CommunityPost",
+          "schema": { "$ref": "#/backend/entities/CommunityPost" },
+          "description": "Community forum posts."
+        }
+      }
+    ]
+  }
+}
